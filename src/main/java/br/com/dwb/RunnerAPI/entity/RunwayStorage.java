@@ -13,7 +13,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "runways-storage")
 public class RunwayStorage implements Serializable {
 
     @Id
@@ -21,12 +20,12 @@ public class RunwayStorage implements Serializable {
     private Long id;
 
     @ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn(name = "runners_id")
-    private Runner runners;
+    @JoinColumn(name = "runner_id")
+    private Runner runner;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "runways_id")
-    private  Runway runways;
+    @JoinColumn(name = "runway_id")
+    private  Runway runway;
 
     @Column(name = "date", nullable = false)
     private Date date;
