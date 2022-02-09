@@ -44,10 +44,10 @@ public class RunwayStorageController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public  void upDateRunner(@PathVariable ("id") Long id, @RequestBody Runway runway) {
+    public  void upDateRunner(@PathVariable ("id") Long id, @RequestBody RunwayStorage runwayStorage) {
         runwayStorageService.ListRunWaysStorageById(id)
                 .map(runwayStorageBase ->{
-                    modelMapper.map(runway, runwayStorageBase);
+                    modelMapper.map(runwayStorage, runwayStorageBase);
                     runwayStorageService.save(runwayStorageBase);
                     return Void.TYPE;
                 }).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Runways-Sorage not found"));
