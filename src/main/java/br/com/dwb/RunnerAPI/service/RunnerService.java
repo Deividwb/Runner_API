@@ -4,6 +4,7 @@ import br.com.dwb.RunnerAPI.entity.Runner;
 import br.com.dwb.RunnerAPI.repository.RunnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -17,11 +18,11 @@ public class RunnerService {
         return runnerRepository.save(runner);
     }
 
-    public List <Runner> listAllRunners(){
+    public List<Runner> listAllRunners(){
         return runnerRepository.findAll();
     }
 
-    public Optional <Runner> ListRunnerById(Long id){
+    public Optional<Runner> ListRunnerById(Long id){
         return runnerRepository.findById(id);
     }
 
@@ -29,4 +30,3 @@ public class RunnerService {
         runnerRepository.deleteById(id);
     }
 }
-
