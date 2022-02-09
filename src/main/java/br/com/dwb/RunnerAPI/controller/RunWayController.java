@@ -37,7 +37,7 @@ public class RunWayController {
     @ResponseStatus(HttpStatus.OK)
     public Runway listRunWaysById(@PathVariable("id") Long id) {
         return runwayService.ListRunWaysById(id)
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Runner not found"));
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Runway not found"));
     }
 
     @PutMapping("/{id}")
@@ -48,7 +48,7 @@ public class RunWayController {
                     modelMapper.map(runway, runwayBase);
                     runwayService.save(runwayBase);
                     return Void.TYPE;
-                }).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Runner not found"));
+                }).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Runway not found"));
     }
 
     @DeleteMapping("/{id}")
@@ -58,6 +58,6 @@ public class RunWayController {
                 .map(runway ->{
                     runwayService.deleteRunWay(runway.getId());
                     return Void.TYPE;
-                }).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Runner not found"));
+                }).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Runway not found"));
     }
 }

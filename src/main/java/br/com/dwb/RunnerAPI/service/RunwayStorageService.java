@@ -17,15 +17,15 @@ public class RunwayStorageService {
         return runwayStorageRepository.save(runwayStorage);
     }
 
-    public List<RunwayStorage> listAllRunWays(){
+    public List<RunwayStorage> listAllRunWaysStorage(){
         return runwayStorageRepository.findAll();
     }
 
-    public Optional<RunwayStorage> ListRunWaysById(Long id){
+    public Optional<RunwayStorage> ListRunWaysStorageById(Long id){
         return runwayStorageRepository.findById(id);
     }
 
-    public void deleteRunWay(Long id){
+    public void deleteRunWayStorage(Long id){
         runwayStorageRepository.deleteById(id);
     }
 }
