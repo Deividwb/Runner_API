@@ -1,8 +1,6 @@
 package br.com.dwb.RunnerAPI.controller;
 
-import br.com.dwb.RunnerAPI.entity.Runway;
 import br.com.dwb.RunnerAPI.entity.RunwayStorage;
-import br.com.dwb.RunnerAPI.service.RunwayService;
 import br.com.dwb.RunnerAPI.service.RunwayStorageService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +42,7 @@ public class RunwayStorageController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public  void upDateRunner(@PathVariable ("id") Long id, @RequestBody RunwayStorage runwayStorage) {
+    public  void upDateRunWayStorage(@PathVariable ("id") Long id, @RequestBody RunwayStorage runwayStorage) {
         runwayStorageService.ListRunWaysStorageById(id)
                 .map(runwayStorageBase ->{
                     modelMapper.map(runwayStorage, runwayStorageBase);
@@ -55,7 +53,7 @@ public class RunwayStorageController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteRunway(@PathVariable ("id") Long id) {
+    public void deleteRunwayStorage(@PathVariable ("id") Long id) {
         runwayStorageService.ListRunWaysStorageById(id)
                 .map(runwayStorage ->{
                     runwayStorageService.deleteRunWayStorage(runwayStorage.getId());
