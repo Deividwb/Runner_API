@@ -19,6 +19,9 @@ public class Runway implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "image")
     private String image;
 

@@ -1,5 +1,6 @@
 package br.com.dwb.RunnerAPI.controller;
 
+import br.com.dwb.RunnerAPI.dto.RunwayStorageDto;
 import br.com.dwb.RunnerAPI.entity.RunwayStorage;
 import br.com.dwb.RunnerAPI.service.RunwayStorageService;
 import org.modelmapper.ModelMapper;
@@ -23,41 +24,49 @@ public class RunwayStorageController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public RunwayStorage save (@RequestBody RunwayStorage runwayStorage){
+    public RunwayStorage save(@RequestBody RunwayStorage runwayStorage) {
         return runwayStorageService.save(runwayStorage);
     }
 
+//    @GetMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<RunwayStorage> listAllRunWaysStorage(){
+//        return runwayStorageService.listAllRunWaysStorage();
+//    }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<RunwayStorage> listAllRunWaysStorage(){
-        return runwayStorageService.listAllRunWaysStorage();
+    public List<RunwayStorageDto> listStorageDto() {
+        return runwayStorageService.listAllStorageDto();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public RunwayStorage listRunWaysStorageById(@PathVariable("id") Long id) {
         return runwayStorageService.ListRunWaysStorageById(id)
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Runways-Sorage not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Runways-Sorage not found"));
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public  void upDateRunWayStorage(@PathVariable ("id") Long id, @RequestBody RunwayStorage runwayStorage) {
+    public void upDateRunWayStorage(@PathVariable("id") Long id, @RequestBody RunwayStorage runwayStorage) {
         runwayStorageService.ListRunWaysStorageById(id)
-                .map(runwayStorageBase ->{
+                .map(runwayStorageBase -> {
                     modelMapper.map(runwayStorage, runwayStorageBase);
                     runwayStorageService.save(runwayStorageBase);
                     return Void.TYPE;
-                }).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Runways-Sorage not found"));
+                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Runways-Sorage not found"));
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteRunwayStorage(@PathVariable ("id") Long id) {
+    public void deleteRunwayStorage(@PathVariable("id") Long id) {
         runwayStorageService.ListRunWaysStorageById(id)
-                .map(runwayStorage ->{
+                .map(runwayStorage -> {
                     runwayStorageService.deleteRunWayStorage(runwayStorage.getId());
                     return Void.TYPE;
-                }).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Runways-Sorage not found"));
+                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Runways-Sorage not found"));
     }
+
+
 }

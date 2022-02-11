@@ -1,5 +1,6 @@
 package br.com.dwb.RunnerAPI.service;
 
+import br.com.dwb.RunnerAPI.dto.RunwayStorageDto;
 import br.com.dwb.RunnerAPI.entity.RunwayStorage;
 import br.com.dwb.RunnerAPI.repository.RunwayStorageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,9 @@ public class RunwayStorageService {
 
     public void deleteRunWayStorage(Long id){
         runwayStorageRepository.deleteById(id);
+    }
+
+    public List<RunwayStorageDto> listAllStorageDto() {
+        return runwayStorageRepository.finAllDto();
     }
 }
