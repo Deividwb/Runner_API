@@ -6,10 +6,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "runners")
 public class Runner implements Serializable {
 
     @Id
@@ -31,7 +34,8 @@ public class Runner implements Serializable {
     @Column(name = "height",nullable = false)
     private String height;
 
-
+    @OneToMany(mappedBy = "runner")
+    private List <RunwayStorage> runwayStorages;
 
 }
 
