@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "runways")
+@Table(name = "runway")
 public class Runway implements Serializable {
 
     @Id
@@ -29,8 +29,7 @@ public class Runway implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "runway")
-    private List<RunwayStorage> runwayStorages;
+
 
 }
 

@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "runners")
+@Table(name = "runner")
 public class Runner implements Serializable {
 
     @Id
@@ -34,8 +34,7 @@ public class Runner implements Serializable {
     @Column(name = "height",nullable = false)
     private String height;
 
-    @OneToMany(mappedBy = "runner")
-    private List <RunwayStorage> runwayStorages;
+
 
 }
 

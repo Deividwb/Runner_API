@@ -2,6 +2,8 @@ package br.com.dwb.RunnerAPI.controller;
 
 import br.com.dwb.RunnerAPI.dto.RunwayStorageDto;
 import br.com.dwb.RunnerAPI.entity.RunwayStorage;
+import br.com.dwb.RunnerAPI.response_dto.StorageResponseDto;
+import br.com.dwb.RunnerAPI.service.RunwayService;
 import br.com.dwb.RunnerAPI.service.RunwayStorageService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,16 @@ public class RunwayStorageController {
     @Autowired
     private ModelMapper modelMapper;
 
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public RunwayStorage save(@RequestBody RunwayStorage runwayStorage) {
-        return runwayStorageService.save(runwayStorage);
+    public StorageResponseDto save(@RequestBody StorageResponseDto storageResponseDto) {
+        return runwayStorageService.saveStorageDto(storageResponseDto);
+
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public RunwayStorage save(@RequestBody RunwayStorage runwayStorage) {
+//        return runwayStorageService.save(runwayStorage);
     }
 
 //    @GetMapping

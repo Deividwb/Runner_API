@@ -13,7 +13,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "runways-storage")
 public class RunwayStorage implements Serializable {
 
     @Id

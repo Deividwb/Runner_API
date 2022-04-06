@@ -9,8 +9,10 @@ import java.util.List;
 
 public interface RunwayStorageRepository extends JpaRepository<RunwayStorage, Long> {
 
-    @Query(value = "SELECT RUNWAYS-STORAGE.ID, NAME AS RUNNER, DESCRIPTION AS RUNWAY, DATE AS DATERUNWAY, USEDTIME   " +
-            "FROM RUNWAYS-STORAGE  JOIN RUNNER  ON RUNWAYS-STORAGE.RUNNER_ID = RUNNER .ID " +
-            "JOIN RUNWAYS ON RUNWAYS-STORAGE.RUNWAY_ID = RUNWAYS.ID", nativeQuery = true)
+    @Query(value = "SELECT RUNWAY_STORAGE.ID, RUNNER.NAME AS RUNNER, RUNWAY.NAME AS RUNWAY, DATE AS DATERUNWAY, USEDTIME " +
+            "FROM RUNWAY_STORAGE JOIN RUNNER ON RUNWAY_STORAGE.RUNNER_ID = RUNNER.ID " +
+            "JOIN RUNWAY ON RUNWAY_STORAGE.RUNWAY_ID = RUNWAY.ID ", nativeQuery = true)
     List<RunwayStorageDto> finAllDto();
+
+
 }
